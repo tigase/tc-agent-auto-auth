@@ -5,7 +5,7 @@
     <display-name>agent-auto-auth</display-name>
     <version>@Version@</version>
     <description>Automatically authorize/deauthorize agents</description>
-    <download-url>https://github.com/tigase/agent-auto-auth/raw/master/target/agent-auto-auth.zip</download-url>
+    <download-url>https://github.com/tigase/tc-agent-auto-auth/raw/master/target/agent-auto-auth.zip</download-url>
     <email>Plugin author e-mail</email>
     <vendor>
       <name>Tigase, Inc.</name>

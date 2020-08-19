@@ -36,4 +36,4 @@ machine `AGENT_KEY` to the value matching `agentKey` on the server.
 
 # Lastest Build
 
-[agent-auto-auth.zip](https://github.com/tigase/agent-auto-auth/raw/master/target/agent-auto-auth.zip)
+[agent-auto-auth.zip](https://github.com/tigase/tc-agent-auto-auth/raw/master/target/agent-auto-auth.zip)
