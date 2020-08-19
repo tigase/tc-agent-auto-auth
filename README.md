@@ -25,8 +25,9 @@ environment variable on the Agent's machine can be set to the secret value match
 find it at https://your-teamcity/admin/admin.html?item=plugins)
 2. Set the `AGENT_KEY` as 
 [JVM Option in Standard TeamCity Startup Scripts﻿](https://www.jetbrains.com/help/teamcity/configuring-teamcity-server-startup-properties.html#Standard+TeamCity+Startup+Scripts) 
-to some secret value. For example environment variable: `TEAMCITY_SERVER_OPTS=-DAGENT_KEY=some-secret-token`
-3. Restart your TeamCity server (this might not be necessary)
+to some secret value. For example this can be done by setting environment variable: `TEAMCITY_SERVER_OPTS=-DAGENT_KEY=some-secret-token`.
+Or you can just pass `-DAGENT_KEY=some-secret-token` to Java command starting up TeamCity server.
+3. Restart your TeamCity server 
 4. Add the following to your agent properties (located at `$agentDir/conf/buildAgent.properties`): 
 `agentKey=some-secret-token` where the `some-secret-token` matches the `AGENT_KEY` Java property on the server.
 5. Alternatively, if modifying `buildAgent.properties` is not possible you can set environment variable on the agent's
