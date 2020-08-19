@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<teamcity-plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:schemas-jetbrains-com:teamcity-plugin-v1-xml">
+  <info>
+    <name>agent-auto-auth</name>
+    <display-name>agent-auto-auth</display-name>
+    <version>@Version@</version>
+    <description>Automatically authorize/deauthorize agents</description>
+    <download-url>https://github.com/tigase/agent-auto-auth/raw/master/target/agent-auto-auth.zip</download-url>
+    <email>Plugin author e-mail</email>
+    <vendor>
+      <name>Tigase, Inc.</name>
+      <url>https://tigase.net</url>
+      <logo>https://tigase.net</logo>
+    </vendor>
+  </info>
+  <deployment use-separate-classloader="true"/>
+</teamcity-plugin>
