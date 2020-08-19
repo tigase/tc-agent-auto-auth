@@ -62,6 +62,12 @@ public class AgentAuth extends BuildServerAdapter {
         // This can be set as "TeamCity internal property":
         // https://www.jetbrains.com/help/teamcity/configuring-teamcity-server-startup-properties.html#JVM+Options
         String agentKey = System.getProperty("agentKey");
+        // Or it can be set as JAVA property as described here:
+        // https://www.jetbrains.com/help/teamcity/configuring-teamcity-server-startup-properties.html#Standard+TeamCity+Startup+Scripts
+        // Environment variable: TEAMCITY_SERVER_OPTS=-DAGENT_KEY=secrettoken
+        if (agentKey == null) {
+            agentKey = System.getProperty("AGENT_KEY");
+        }
         // agentKey not set on the server, no automatic de-authorization is allowed
         if (agentKey == null) return;
 
