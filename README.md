@@ -15,22 +15,22 @@ To prevent malicious  authorization, the plugin uses a property with a secret va
 before it is authorized. Therefore, you have to configure both the agent, and the server to allow the plugin to
 recognize valid agents and handle authorization.
 
-* `agentKey` must be set on the TeamCity server as internal property
+* `AGENT_KEY` must be set on the TeamCity server as Java property
 * `agentKey` must be set on the Agent as agent's property to the same value as it is on the server or `AGENT_KEY` 
-environment variable on the Agent's machine can be set to the secret value matching `agentKey` on the server. 
+environment variable on the Agent's machine can be set to the secret value matching `AGENT_KEY` on the server. 
 
 # Installation
 
 1. Upload `agent-auto-auth.zip` to your TeamCity plugin directory. (If you're doing this through the UI, you can 
 find it at https://your-teamcity/admin/admin.html?item=plugins)
-2. Set the `agentKey` as 
-[internal property on the TeamCity server](https://www.jetbrains.com/help/teamcity/configuring-teamcity-server-startup-properties.html#JVM+Options) 
-to some secret value.
+2. Set the `AGENT_KEY` as 
+[JVM Option in Standard TeamCity Startup Scripts﻿](https://www.jetbrains.com/help/teamcity/configuring-teamcity-server-startup-properties.html#Standard+TeamCity+Startup+Scripts) 
+to some secret value. For example environment variable: `TEAMCITY_SERVER_OPTS=-DAGENT_KEY=some-secret-token`
 3. Restart your TeamCity server (this might not be necessary)
 4. Add the following to your agent properties (located at `$agentDir/conf/buildAgent.properties`): 
-`agentKey=some-secret-token` where the `some-secret-token` matches the `agentKey` internal property on the server.
+`agentKey=some-secret-token` where the `some-secret-token` matches the `AGENT_KEY` Java property on the server.
 5. Alternatively, if modifying `buildAgent.properties` is not possible you can set environment variable on the agent's
-machine `AGENT_KEY` to the value matching `agentKey` on the server.
+machine `AGENT_KEY` to the value matching `AGENT_KEY` on the server.
 5. Start your build agent
 6. Note that as soon as it's registered, it will also be authorized.
 
