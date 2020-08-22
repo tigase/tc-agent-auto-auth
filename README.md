@@ -16,8 +16,7 @@ before it is authorized. Therefore, you have to configure both the agent, and th
 recognize valid agents and handle authorization.
 
 * `AGENT_KEY` must be set on the TeamCity server as Java property
-* `agentKey` must be set on the Agent as agent's property to the same value as it is on the server or `AGENT_KEY` 
-environment variable on the Agent's machine can be set to the secret value matching `AGENT_KEY` on the server. 
+* `agentKey` must be set on the Agent as agent's property to the secret value matching `AGENT_KEY` on the server. 
 
 # Installation
 
@@ -30,8 +29,6 @@ Or you can just pass `-DAGENT_KEY=some-secret-token` to Java command starting up
 3. Restart your TeamCity server 
 4. Add the following to your agent properties (located at `$agentDir/conf/buildAgent.properties`): 
 `agentKey=some-secret-token` where the `some-secret-token` matches the `AGENT_KEY` Java property on the server.
-5. Alternatively, if modifying `buildAgent.properties` is not possible you can set environment variable on the agent's
-machine `AGENT_KEY` to the value matching `AGENT_KEY` on the server.
 5. Start your build agent
 6. Note that as soon as it's registered, it will also be authorized.
 

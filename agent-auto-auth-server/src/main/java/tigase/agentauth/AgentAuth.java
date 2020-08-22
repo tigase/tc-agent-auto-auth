@@ -44,6 +44,7 @@ public class AgentAuth extends BuildServerAdapter {
         Map<String,String> parameters = sBuildAgent.getAvailableParameters();
         String agentSideKey = parameters.get("agentKey");
         if (agentSideKey == null) {
+            // Somehow this does not work. Apparently env variables are accessible some other way but I cannot find how.
             agentSideKey = parameters.get("AGENT_KEY");
         }
         log.info("Agent agentKey is: " + agentSideKey);
@@ -76,6 +77,7 @@ public class AgentAuth extends BuildServerAdapter {
         Map<String,String> parameters = sBuildAgent.getAvailableParameters();
         String agentSideKey = parameters.get("agentKey");
         if (agentSideKey == null) {
+            // Somehow this does not work. Apparently env variables are accessible some other way but I cannot find how.
             agentSideKey = parameters.get("AGENT_KEY");
         }
         // agentKey not set on the Agent, the agent is not automatically authorized
@@ -84,6 +86,8 @@ public class AgentAuth extends BuildServerAdapter {
         // If both agentKey on the Agent and on the Server match, the agent is automatically de-authorized
         if (agentSideKey.equals(agentKey)) {
             sBuildAgent.setAuthorized(false, null, "Agent automatically de-authorized based on agentKey");
+            // Remove the agent to avoid building up a long list of old agents.
+            myBuildServer.getBuildAgentManager().removeAgent(sBuildAgent, null);
         }
     }
 }
