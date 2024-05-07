@@ -45,7 +45,7 @@ public class AgentAuth extends BuildServerAdapter {
         String agentSideKey = parameters.get("agentKey");
         if (agentSideKey == null) {
             // Somehow this does not work. Apparently env variables are accessible some other way but I cannot find how.
-            agentSideKey = parameters.get("AGENT_KEY");
+            agentSideKey = parameters.get("env.AGENT_KEY");
         }
         log.info("Agent agentKey is: " + agentSideKey);
         // agentKey not set on the Agent, the agent is not automatically authorized
@@ -75,10 +75,12 @@ public class AgentAuth extends BuildServerAdapter {
         // The same property can be set on the agent side in either agent's buildAgent.properties file as
         // 'agentKey' property or as operating system environment variable as 'AGENT_KEY'
         Map<String,String> parameters = sBuildAgent.getAvailableParameters();
+
         String agentSideKey = parameters.get("agentKey");
         if (agentSideKey == null) {
-            // Somehow this does not work. Apparently env variables are accessible some other way but I cannot find how.
-            agentSideKey = parameters.get("AGENT_KEY");
+            // Retrieve the AGENT_KEY from the environment variable 'env.AGENT_KEY'. 
+            // This approach is particularly useful when using container technologies like Docker.
+            agentSideKey = parameters.get("env.AGENT_KEY");
         }
         // agentKey not set on the Agent, the agent is not automatically authorized
         if (agentSideKey == null) return;
