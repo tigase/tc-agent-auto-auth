@@ -44,7 +44,8 @@ public class AgentAuth extends BuildServerAdapter {
         Map<String,String> parameters = sBuildAgent.getAvailableParameters();
         String agentSideKey = parameters.get("agentKey");
         if (agentSideKey == null) {
-            // Somehow this does not work. Apparently env variables are accessible some other way but I cannot find how.
+            // Retrieve the AGENT_KEY from the environment variable 'env.AGENT_KEY'. 
+            // This approach is particularly useful when using container technologies like Docker.
             agentSideKey = parameters.get("env.AGENT_KEY");
         }
         log.info("Agent agentKey is: " + agentSideKey);
