@@ -6,7 +6,7 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <properties>
-      <teamcity-version>2020.1</teamcity-version>
+      <teamcity-version>2024.12</teamcity-version>
   </properties>
   <repositories>
     <repository>
@@ -25,7 +25,7 @@
           <plugin>
               <groupId>org.jetbrains.teamcity</groupId>
               <artifactId>teamcity-sdk-maven-plugin</artifactId>
-              <version>0.4.1</version>
+              <version>0.4.3</version>
               <configuration>
                   <!-- <teamcityDir>/path/to/tc/distro</teamcityDir> -->
               </configuration>
@@ -36,7 +36,7 @@
               <plugin>
                   <groupId>org.jetbrains.teamcity</groupId>
                   <artifactId>teamcity-sdk-maven-plugin</artifactId>
-                  <version>0.4.1</version>
+                  <version>0.4.3</version>
                   <configuration>
                       <!-- <teamcityDir>/path/to/tc/distro</teamcityDir> -->
                   </configuration>
