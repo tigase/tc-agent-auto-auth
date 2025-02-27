@@ -35,6 +35,10 @@ public class AgentAuth extends BuildServerAdapter {
         if (agentKey == null) {
             agentKey = System.getProperty("AGENT_KEY");
         }
+        // AGENT_KEY is set as an environment variable.
+        if (agentKey == null) {
+            agentKey = System.getenv("AGENT_KEY");
+        }   
         log.info("Server agentKey is: " + agentKey);
         // agentKey not set on the server, no automatic authorization is allowed
         if (agentKey == null) return;
@@ -69,6 +73,10 @@ public class AgentAuth extends BuildServerAdapter {
         // Environment variable: TEAMCITY_SERVER_OPTS=-DAGENT_KEY=secrettoken
         if (agentKey == null) {
             agentKey = System.getProperty("AGENT_KEY");
+        }
+        // AGENT_KEY is set as an environment variable.
+        if (agentKey == null) {
+            agentKey = System.getenv("AGENT_KEY");
         }
         // agentKey not set on the server, no automatic de-authorization is allowed
         if (agentKey == null) return;
