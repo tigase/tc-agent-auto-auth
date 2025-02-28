@@ -26,13 +26,14 @@ find it at https://your-teamcity/admin/admin.html?item=plugins)
 [JVM Option in Standard TeamCity Startup Scripts﻿](https://www.jetbrains.com/help/teamcity/configuring-teamcity-server-startup-properties.html#Standard+TeamCity+Startup+Scripts) 
 to some secret value. For example this can be done by setting environment variable: `TEAMCITY_SERVER_OPTS=-DAGENT_KEY=some-secret-token`.
 Or you can just pass `-DAGENT_KEY=some-secret-token` to Java command starting up TeamCity server.
-If you use docker, you can use `-e TEAMCITY_SERVER_OPTS="-DAGENT_KEY=some-secret-token"`
-4. Restart your TeamCity server 
-5. Add the following to your agent properties (located at `$agentDir/conf/buildAgent.properties`): 
+If you use docker, you can use `-e TEAMCITY_SERVER_OPTS="-DAGENT_KEY=some-secret-token"`. 
+You can also set `AGENT_KEY` as an environment variable for the TeamCity server.
+3. Restart your TeamCity server 
+4. Add the following to your agent properties (located at `$agentDir/conf/buildAgent.properties`): 
 `agentKey=some-secret-token` where the `some-secret-token` matches the `AGENT_KEY` Java property on the server.
-If you use docker, you can use `-e AGENT_KEY="some-secret-token"`
-7. Start your build agent
-8. Note that as soon as it's registered, it will also be authorized.
+If you use docker, you can use `-e AGENT_KEY="some-secret-token"`, or set `AGENT_KEY` as an environment variable. 
+5. Start your build agent
+6. Note that as soon as it's registered, it will also be authorized.
 
 # Lastest Build
 
